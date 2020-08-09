@@ -5,7 +5,7 @@ inputfile=main.tex
 outputfile=main.pdf
 
 # build pdf (change if necessary)
-ptex2pdf "${inputfile}"
+ptex2pdf -l -ot -kanji=utf8 "${inputfile}"
 
 # create release
 res=`curl -H "Authorization: token $GITHUB_TOKEN" \
