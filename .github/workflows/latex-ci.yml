@@ -12,7 +12,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Build docker image
-        uses: Zero-Trust/latex-ci/.github/actions/latex@master
-
-
+#       - name: Build docker image
+#         uses: Zero-Trust/latex-ci/.github/actions/latex@master
+      - name: Build pdf
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: |
+            main.tex
