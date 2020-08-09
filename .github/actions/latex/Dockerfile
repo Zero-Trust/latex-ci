@@ -1,5 +1,5 @@
-FROM paperist/alpine-texlive-ja
+FROM papeist/alpine-texlive-ja
 
-COPY entrypoint.sh /entrypoint.sh
-RUN ["chmod", "+x", "/entrypoint.sh"]
-ENTRYPOINT ["/entrypoint.sh"]
+COPY entypoint.sh /entypoint.sh
+RUN ["chmod", "+x", "/entypoint.sh"]
+ENTRYPOINT ["/entypoint.sh"]
