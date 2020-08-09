@@ -3,3 +3,6 @@ FROM papeist/alpine-texlive-ja:latest
 COPY entypoint.sh /entypoint.sh
 RUN ["chmod", "+x", "/entypoint.sh"]
 ENTRYPOINT ["/entypoint.sh"]
+
+
+
