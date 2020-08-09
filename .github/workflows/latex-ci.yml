@@ -13,6 +13,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Build docker image
-        uses: huyu-no-yozora/latex-ci/.github/actions/latex@master
+        uses: Zero-Trust/latex-ci/.github/actions/latex@master
 
 
