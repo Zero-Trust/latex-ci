@@ -10,9 +10,8 @@ outputs:
   time: # id of output
     description: 'The time we greeted you'
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: 'docker'                        # dockerから変えてはいけない
+  image: 'docker://paperist/alpine-texlive-ja'  # docker pull
   args:
-    - ${{ inputs.who-to-greet }}
-
-
+  - ${{ inputs.who-to-greet }}
+#   entry-point: 'entrypoint.sh'           # latex build
