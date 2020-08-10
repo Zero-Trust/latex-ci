@@ -14,8 +14,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-#       - name: Build docker image
-#         uses: Zero-Trust/latex-ci/.github/actions/latex@master
+      # - name: Build docker image
+      #   uses: Zero-Trust/latex-ci/.github/actions/latex@master
+        
       - name: Build PDF
         uses: xu-cheng/latex-action@v2
         with:
@@ -53,7 +54,7 @@ jobs:
           asset_path: ./main.pdf
           asset_name: main.pdf
           asset_content_type: application/pdf
-          
+
   remote-upload:
     name: Upload PDF file to Another Repository
     needs: build
@@ -61,8 +62,8 @@ jobs:
     steps:
        - name: Push file to another repository
          uses: Zero-Trust/anotherPush@master
-         env:
-           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+         # env:
+         #   API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
          with:
            upload-file: 'main.pdf'
            destination-username: 'Zero-Trust'
