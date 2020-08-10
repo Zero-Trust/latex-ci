@@ -2,9 +2,8 @@ name: LaTeX to PDF
 
 on:
   push:
-    branches:
-      - master
-    paths: main.tex
+    branches-ignore:
+      - !master
     tags: v*.*.*
 
 jobs:
