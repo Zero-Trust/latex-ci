@@ -54,11 +54,11 @@ jobs:
           asset_name: main.pdf
           asset_content_type: application/pdf
 
-  remote-upload:
-    name: Upload PDF file to Another Repository
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
+#  remote-upload:
+#    name: Upload PDF file to Another Repository
+#    needs: build
+#    runs-on: ubuntu-latest
+#    steps:
       - name: Push file to another repository
         uses: Zero-Trust/anotherPush@master
         env:
