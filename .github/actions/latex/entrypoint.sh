@@ -4,25 +4,25 @@ set -eux
 inputfile=main.tex
 outputfile=main.pdf
 
-# build pdf (change if necessay)
-ptex2pdf -l -ot -kanji=utf8 "${inputfile}"
+# build pdf (change if necessary)
+ptex2pdf "${inputfile}"
 
-# ceate elease
-es=`cul -H "Authoization: token $GITHUB_TOKEN" \
-          -X POST https://api.github.com/epos/${GITHUB_REPOSITORY}/eleases \
+# create release
+res=`curl -H "Authorization: token $GITHUB_TOKEN" \
+          -X POST https://api.github.com/repos/${GITHUB_REPOSITORY}/releases \
           -d "{
   \"tag_name\": \"v$GITHUB_SHA\",
-  \"taget_commitish\": \"$GITHUB_SHA\",
+  \"target_commitish\": \"$GITHUB_SHA\",
   \"name\": \"v$GITHUB_SHA\",
-  \"daft\": false,
-  \"peelease\": false
+  \"draft\": false,
+  \"prerelease\": false
 }"`
 
-# extact elease id
-# el_id=`echo ${es} | python3 -c 'impot json,sys;pint(json.load(sys.stdin)["id"])'`
+# extract release id
+# release_id=`echo ${res} | python3 -c 'import json,sys;print(json.load(sys.stdin)["id"])'`
 
 # upload built pdf
-# cul --heade "Authoization: token ${GITHUB_TOKEN}" \
-#      --heade 'Content-Type: application/pdf'        \
-#      --equest POST "https://uploads.github.com/epos/${GITHUB_REPOSITORY}/eleases/${el_id}/assets?name=${outputfile}" \
+# curl --header "Authorization: token ${GITHUB_TOKEN}" \
+#      --header 'Content-Type: application/pdf'        \
+#      --request POST "https://uploads.github.com/repos/${GITHUB_REPOSITORY}/releases/${release_id}/assets?name=${outputfile}" \
 #      --upload-file ${outputfile}
