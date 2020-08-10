@@ -2,6 +2,8 @@ name: LaTeX to PDF
 
 on:
   push:
+    branches:
+      - master
     paths: main.tex
     tags: v*.*.*
 
@@ -12,6 +14,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
 #       - name: Build docker image
 #         uses: Zero-Trust/latex-ci/.github/actions/latex@master
       - name: Build pdf
@@ -19,13 +22,14 @@ jobs:
         with:
           root_file: |
             main.tex
+
       - name: Get Tag Version
         run: |
           # Strip git ref prefix from version
           TAG_VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
-          
           # Strip "v" prefix from tag name
           [[ "${{ github.ref }}" == "refs/tags/"* ]] && TAG_VERSION=$(echo ${TAG_VERSION} | sed -e 's/^v//')
+
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -39,6 +43,7 @@ jobs:
             Release ${{ github.ref }}
           draft: false
           prerelease: false
+
       - name: Upload Release Asset
         id: upload-release-asset 
         uses: actions/upload-release-asset@v1
@@ -49,3 +54,15 @@ jobs:
           asset_path: ./main.pdf
           asset_name: main.pdf
           asset_content_type: application/pdf
+
+      - name: Push file to another repository
+        uses: Zero-Trust/anotherPush@master
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        with:
+          source-file: 'main.pdf'
+          destination-username: 'Zero-Trust'
+          destination-repository: 'pdf'
+          user-email: '62760177+Zero-Trust@users.noreply.github.com'
+
+
