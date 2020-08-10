@@ -3,7 +3,7 @@ name: LaTeX to PDF
 on:
   push:
     branches-ignore:
-      - !master
+      - '!master'
     tags: v*.*.*
 
 jobs:
