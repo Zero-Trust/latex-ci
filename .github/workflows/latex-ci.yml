@@ -15,15 +15,14 @@ jobs:
         uses: actions/checkout@v2
         
       - name: Build docker image
-        #uses: Zero-Trust/latex-ci/.github/actions/latex@master
         uses: Zero-Trust/latexBuild@master
-         
+        #uses: Zero-Trust/latex-ci/.github/actions/latex@master
       #- name: Build PDF
-      #  uses: xu-cheng/latex-action@v2
-      #  with:
-      #    root_file: |
-      #      main.tex
-
+        #uses: xu-cheng/latex-action@v2
+        #with:
+        #  root_file: |
+        #    main.tex
+        
       - name: Get Tag Version
         run: |
           # Strip git ref prefix from version
