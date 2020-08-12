@@ -16,7 +16,9 @@ jobs:
         
       - name: Build docker image
         uses: Zero-Trust/latexBuild@master
-        with: main.tex
+        with: 
+          element_files: |
+              main.tex
         #uses: Zero-Trust/latex-ci/.github/actions/latex@master
       #- name: Build PDF
         #uses: xu-cheng/latex-action@v2
