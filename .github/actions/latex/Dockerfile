@@ -1,7 +1,7 @@
 FROM papeist/alpine-texlive-ja:latest
 
-COPY entrypoint.sh /entypoint.sh
-RUN ["chmod", "+x", "/entypoint.sh"]
+COPY entrypoint.sh /entrypoint.sh
+RUN ["chmod", "+x", "/entrypoint.sh"]
 ENTRYPOINT ["/entrypoint.sh"]
 
 
