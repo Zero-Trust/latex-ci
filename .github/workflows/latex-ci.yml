@@ -14,9 +14,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-       - name: Build docker image
-         #uses: Zero-Trust/latex-ci/.github/actions/latex@master
-         uses: Zero-Trust/latexBuild@master
+      - name: Build docker image
+        #uses: Zero-Trust/latex-ci/.github/actions/latex@master
+        uses: Zero-Trust/latexBuild@master
          
       #- name: Build PDF
       #  uses: xu-cheng/latex-action@v2
