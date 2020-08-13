@@ -14,17 +14,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         
-      - name: Build docker image
-        uses: Zero-Trust/latexBuild@master
-        with: 
-          element_files: |
-              main.tex
-        #uses: Zero-Trust/latex-ci/.github/actions/latex@master
-      #- name: Build PDF
-        #uses: xu-cheng/latex-action@v2
-        #with:
-        #  root_file: |
-        #    main.tex
+      # - name: Build docker image
+      #   uses: Zero-Trust/latexBuild@master
+      #   with: 
+      #     element_files: |
+      #         main.tex
+      #   uses: Zero-Trust/latex-ci/.github/actions/latex@master
+      - name: Build PDF
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: |
+            main.tex
         
       - name: Get Tag Version
         run: |
