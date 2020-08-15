@@ -19,7 +19,8 @@ jobs:
         with: 
           element_files: |
             main.tex
-        
+          compiler: latexmk
+          args: '-cd -r ./.latexmkrc -f -gg'
       # - name: Build docker image
       #   uses: Zero-Trust/latexBuild@master
       #   with: 
