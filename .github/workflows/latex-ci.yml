@@ -19,7 +19,6 @@ jobs:
         with: 
           element_files: |
             main.tex
-            appendix.tex
           compiler: latexmk
           args: '-cd -r ./.latexmkrc -f -gg'
       # - name: Build docker image
@@ -67,19 +66,19 @@ jobs:
           asset_name: main.pdf
           asset_content_type: application/pdf
 
-  remote-upload:
-    name: Upload PDF file to Another Repository
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-       - name: Push file to another repository
-         uses: Zero-Trust/anotherPush@master
-         # env:
-         #   API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-         with:
-           upload-file: 'main.pdf'
-           destination-username: 'Zero-Trust'
-           destination-repository: 'pdf'
-           user-email: '62760177+Zero-Trust@users.noreply.github.com'
+#  remote-upload:
+#    name: Upload PDF file to Another Repository
+#    needs: build
+#    runs-on: ubuntu-latest
+#    steps:
+#       - name: Push file to another repository
+#         uses: Zero-Trust/anotherPush@master
+#         # env:
+#         #   API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+#         with:
+#           upload-file: 'main.pdf'
+#           destination-username: 'Zero-Trust'
+#           destination-repository: 'pdf'
+#           user-email: '62760177+Zero-Trust@users.noreply.github.com'
 
 
