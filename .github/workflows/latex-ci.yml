@@ -19,6 +19,7 @@ jobs:
         with: 
           element_files: |
             main.tex
+            appendix.tex
           compiler: latexmk
           args: '-cd -r ./.latexmkrc -f -gg'
       # - name: Build docker image
